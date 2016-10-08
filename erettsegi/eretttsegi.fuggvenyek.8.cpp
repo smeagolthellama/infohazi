@@ -24,8 +24,54 @@
 
 #include <iostream>
 
-int * sub(int m,int n,int a[],int b[]){
-	
+using namespace std;
+
+int minpos;
+
+int minimum(int n, int a[100])
+{
+	int i, mini = a[0];
+	minpos = 0;
+	for(i = 0; i < n; i++) {
+		if(a[i] < mini) {
+			mini = a[i];
+			minpos = i;
+		}
+	}
+	return mini;
+}
+
+void rendez(int n, int a[100])
+{
+	int i;
+	for(i = 0; i < n; i++) {
+		int b[100];
+		for(int j = i; j < n; j++) {
+			b[j - i] = a[j];
+		}
+		int tmp = a[i];
+		a[i] = minimum(n - i, b);
+		a[minpos + i] = tmp;
+	}
+	for(i = 0; i < n; i++) {
+		cout << a[i] << '\t';
+	}
+}
+
+int * sub(int n,int m,int a[],int b[]){
+	rendez(a,n);
+	rendez(b,m);
+	int t[n+m];
+	int i=0,j=0,k=0;
+	while(i<n || j<m){
+		for(;a[i]>b[j] && i<n;i++,k++){
+			t[k]=a[i];
+		}
+		for(;a[i]<b[j] && j<m;j++,k++){
+			t[k]=b[j];
+		}
+	}
+	return t;
 }
 
 int main(int argc, char **argv)
