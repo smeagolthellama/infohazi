@@ -24,14 +24,8 @@
 
 #include <iostream>
 
-int sub(int v[],int n,int a){
-	int r;
-	for(int i=0;i<n;i++){
-		if(v[i]<a){
-			r++;
-		}
-	}
-	return r;
+int * sub(int m,int n,int a[],int b[]){
+	
 }
 
 int main(int argc, char **argv)
