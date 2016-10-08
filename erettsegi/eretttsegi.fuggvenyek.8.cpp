@@ -59,8 +59,8 @@ void rendez(int n, int a[100])
 }
 
 int * sub(int n,int m,int a[],int b[]){
-	rendez(a,n);
-	rendez(b,m);
+	rendez(n,a);
+	rendez(m,b);
 	int t[n+m];
 	int i=0,j=0,k=0;
 	while(i<n || j<m){
